@@ -1,0 +1,1 @@
+- fix: avoid crash when traffic profile is missing
