@@ -1,12 +1,28 @@
 #include <nekobox/global/LogRouteHelper.hpp>
 
 #include <nekobox/dataStore/Database.hpp>
-#include <QHostAddress>
 #include <QObject>
 #include <QRegularExpression>
 #include <QSet>
 
 namespace LogRoute {
+
+static bool looksLikeIpv4(const QString &value) {
+  static const QRegularExpression re(
+      R"(^(?:\d{1,3}\.){3}\d{1,3}$)");
+  const auto match = re.match(value);
+  if (!match.hasMatch()) {
+    return false;
+  }
+  for (const QString &part : value.split('.')) {
+    bool ok = false;
+    const int octet = part.toInt(&ok);
+    if (!ok || octet < 0 || octet > 255) {
+      return false;
+    }
+  }
+  return true;
+}
 
 static bool looksLikeDomain(const QString &candidate) {
   const QString dom = candidate.trimmed().toLower();
@@ -19,8 +35,7 @@ static bool looksLikeDomain(const QString &candidate) {
   if (dom.startsWith('[')) {
     return false;
   }
-  QHostAddress addr;
-  if (addr.setAddress(dom)) {
+  if (looksLikeIpv4(dom)) {
     return false;
   }
   static const QRegularExpression re(
