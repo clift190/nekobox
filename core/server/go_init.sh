@@ -17,7 +17,10 @@ go mod tidy
 go mod edit -replace=github.com/sagernet/sing-tun=github.com/qr243vbi/sing-tun@HEAD
 go mod tidy
 
-go mod edit -replace=github.com/sagernet/sing-vmess=github.com/starifly/sing-vmess@HEAD
+go mod edit -replace=github.com/sagernet/sing-vmess=github.com/qr243vbi/sing-vmess@HEAD
+go mod tidy
+
+go mod edit -replace=github.com/sagernet/gvisor=github.com/nintendobox/gvisor@v0.0.3-fix
 go mod tidy
 
 qr243vbi_version="$(go list -m -json all | jq -r 'select(.Replace != null) | select (.Replace.Path == "github.com/qr243vbi/sing-box") | .Replace.Version')"

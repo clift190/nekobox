@@ -163,7 +163,7 @@ require (
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/term v0.45.0 // indirect
 	golang.org/x/text v0.41.0 // indirect
-	golang.org/x/time v0.11.0 // indirect
+	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.48.0 // indirect
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
 	golang.zx2c4.com/wireguard/windows v0.5.3 // indirect
@@ -179,4 +179,6 @@ replace github.com/sagernet/sing-box => github.com/qr243vbi/sing-box v1.13.19-mo
 
 replace github.com/sagernet/sing-tun => github.com/qr243vbi/sing-tun v0.9.0-mod1
 
-replace github.com/sagernet/sing-vmess => github.com/starifly/sing-vmess v0.2.8-mod.1
+replace github.com/sagernet/sing-vmess => github.com/qr243vbi/sing-vmess v0.2.8-mod1
+
+replace github.com/sagernet/gvisor => github.com/nintendobox/gvisor v0.0.3-fix
