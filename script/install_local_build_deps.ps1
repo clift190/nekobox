@@ -5,9 +5,6 @@
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "Установка базовых инструментов через winget..." -ForegroundColor Cyan
-Write-Host "Потребуются права администратора и несколько ГБ места."
-Write-Host ""
 
 $packages = @(
     @{ Id = "GitHub.cli"; Name = "GitHub CLI" },
@@ -25,9 +22,3 @@ foreach ($pkg in $packages) {
         winget install --id $pkg.Id -e --accept-package-agreements --accept-source-agreements
     }
 }
-
-Write-Host ""
-Write-Host "Готово. Перезапустите терминал." -ForegroundColor Green
-Write-Host ""
-Write-Host "ВАЖНО: для полной локальной сборки NekoBox ещё нужны Qt 6 и vcpkg-зависимости."
-Write-Host "Для обычного пользователя проще: .\script\publish_and_build.ps1 (сборка в GitHub)."
