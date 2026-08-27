@@ -34,6 +34,9 @@ popd
 go mod edit -go=1.23
 go mod tidy
 
+go get -u github.com/go-json-experiment/json
+go mod tidy
+
 #go mod vendor
 
 rm -rf sing-box
